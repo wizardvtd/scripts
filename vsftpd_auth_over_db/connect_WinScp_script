@@ -1,0 +1,16 @@
+open ftps://user:Password@192.168.1.1
+option transfer binary
+lcd Y:\temp\batch\FromODB\
+put -delete Y:\temp\batch\FromODB\*.* /batch/FromODB/
+get -delete /batch/ToODB/*.* Y:\temp\batch\ToODB\
+get -delete /batch/backup/*.* Y:\temp\batch\backup\
+get -delete /batch/error/*.* Y:\temp\batch\error\
+get -delete /MsgArch/Admin/*.* Y:\temp\MsgArch\Admin\
+get -delete /MsgArch/FromSWIFT/*.* Y:\temp\MsgArch\FromSWIFT\
+get -delete /MsgArch/FromSWIFTd/*.* Y:\temp\MsgArch\FromSWIFTd\
+get -delete /MsgArch/ToSWIFT/*.* Y:\temp\MsgArch\ToSWIFT\
+get -delete /MsgArch/ToSWIFTd/*.* Y:\temp\MsgArch\ToSWIFTd\
+get -delete /MsgArch/ToPrint/*.* Y:\temp\MsgArch\ToPrint\
+get -delete /MsgArch/LocalNacks/*.* Y:\temp\MsgArch\LocalNacks\
+close
+bye
