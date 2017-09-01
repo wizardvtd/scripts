@@ -2,7 +2,7 @@
 scripts for SWIFT SAA/SAG automatisation
 
 
-vsftpd_auth_over_db
+1. vsftpd_auth_over_db
 Набор скриптов для автоматической смены/генерации пароля в связке (vsftpd + auth over MySQL) <-> WinSCP Client.
 
 Суть процедуры:
@@ -16,3 +16,5 @@ vsftpd_auth_over_db
 
 Важно:
 - менять пароль в файле смысла нет, сервер эти файлы не читает и пароль будет таким, какой сгененрирован.
+
+2. sag_backsync.sh Ежемесячный SWP+SAG и ежедневный бэкап SAG, синхронизация на несколько серверов
