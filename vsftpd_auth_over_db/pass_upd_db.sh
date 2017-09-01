@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# Script for users
+# For automatisation password change 
+# Tested in CygWin env.
+
 timepair=`date +%Y_%m_%d`
 time_now=`date +%Y_%m_%d_%H_%M_%S`
 logfile=passwd_upd_db.log #Log file
