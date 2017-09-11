@@ -15,30 +15,27 @@
 odbdrive=y
 driveto=y
 #
-
 FromODB=/cygdrive/$odbdrive/FromODB/
 AuthMsg=/cygdrive/$driveto/temp/batch/AuthMsg/
-cd $FromODB
 
 
+      
 limits () {
     field32=`gawk ' BEGIN {FS=":"} /':32A:'/ { print $3 } ' < $file`
-    echo $field32 #>> aaa.txt
+    #echo $field32 #>> aaa.txt
     val=`expr substr $field32 7 3`
-    ssum=`expr substr $field32 10 10 | awk 'BEGIN {FS=","}  {print $1}' `
+    ssum=`expr substr $field32 10 20 | awk 'BEGIN {FS=","}  {print $1}' `
 #echo $val
 #echo $ssum
+declare -A limit=( [USD]=50000 [EUR]=50000 [GBP]=50000 )
 
-    limit=([USD]=50000 [EUR]=50000 [GBP]=50000)
 
-	if [[ $val -eq "USD" || $val -eq "EUR" || $val -eq "GBP" || $val -eq "CZK" ]]
+        if [[ $val == "USD" || $val == "EUR" || $val == "RUB" || $val == "GBP" ]]
 	    then 
-	    echo $val $ssum 
-	    echo ${limit[$val]}
 		    if [ $ssum -le  ${limit[$val]} ]
 		       then 
-			   echo  $ssum  ${limit[$val]} 
-                           cp $file $AuthMsg | tee -a $logile
+			   echo "$file Summ: $ssum Valut:$val  Limit: ${limit[$val]}" | tee -a $logile
+                           cp -v $file $AuthMsg | tee -a $logile
 		    fi
 	else
 	echo "Валюты нет в списке"
@@ -57,13 +54,3 @@ limits
             fi
 done
 
-#      for file in *; do
-# Find 103 MT                   
-#                grep "2:I103" $file
-#
-#            if [ $? -eq 0 ]; then
-#
-#limits
-#                cp $file $AuthMsg | tee -a $logile
-#            fi
-#done
