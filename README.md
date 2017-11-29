@@ -30,3 +30,12 @@ scripts for SWIFT SAA/SAG automatisation
 include - libs for bash
 
 match_current_dir.sh - Script for check directory before operations (is exist, is dir, and is mach to needed dir)
+
+---------------------------------------------------------------------------------------------------------
+saa->
+ -check_rd_backup.sh
+    Cygwin + Win
+    Script for control RD-Log files in SAA Redolog dir.
+    Started from Nagios NRPE client
+    Exit codes 0 - ok, 1 - warning, 2 - Error
+    For saa_dbrecovery with incremental backup 30 min.
