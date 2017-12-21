@@ -2,7 +2,7 @@
 scripts for SWIFT SAA/SAG automatisation
 
 
-1. vsftpd_auth_over_db
+-- vsftpd_auth_over_db
 Набор скриптов для автоматической смены/генерации пароля в связке (vsftpd + auth over MySQL) <-> WinSCP Client.
 
 Суть процедуры:
@@ -21,19 +21,28 @@ scripts for SWIFT SAA/SAG automatisation
 ---------------------------------------------------------------------------------------------------------
 
 
-2. sag_backsync.sh Ежемесячный SWP+SAG и ежедневный бэкап SAG, синхронизация на несколько серверов
+-- sag--> SWIFT Alliance Gateway + SWP
 
-3. limit_copy.sh Скрипт для копирования RGE формата в другую директорию с лимитами по валюте/сумме по полю 32A
+  - sag_backsync.sh Ежемесячный SWP+SAG и ежедневный бэкап SAG, синхронизация на несколько серверов
+
 
 ----------------------------------------------------------------------------------------------------------
 
-include - libs for bash
+-- include --> libs for bash
 
 match_current_dir.sh - Script for check directory before operations (is exist, is dir, and is mach to needed dir)
 
 ---------------------------------------------------------------------------------------------------------
-saa->
- -check_rd_backup.sh
+
+-- saa --> SAA - SWIFT Alliance Access
+ - check_rd_backup.sh
     Cygwin + Win, Script for control RD-Log files in SAA Redolog dir.
     Started from Nagios NRPE client, exit codes 0 - ok, 1 - warning, 2 - Error
     For saa_dbrecovery with incremental backup 30 min.
+
+ - limit_copy.sh Скрипт для копирования RGE формата в другую директорию с лимитами по валюте/сумме по полю 32A
+
+
+----------------------------------------------------------------------------------------------------------
+
+-- sha256_check.sh Check backups, add new backups, log file for Nagios (cat_sha256_log.sh)
